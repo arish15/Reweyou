@@ -157,9 +157,7 @@ public class MessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                     viewHolder.date.setText(messagelist.get(position).getDate());
                 }
 
-
                 Glide.with(mContext).load(messagelist.get(position).getProfilepic()).placeholder(R.drawable.download).error(R.drawable.download).fallback(R.drawable.download).dontAnimate().into(viewHolder.profilepic);
-
 
                 if (messagelist.get(position).getImage() == null || messagelist.get(position).getImage().isEmpty()) {
                     viewHolder.image.setVisibility(View.GONE);

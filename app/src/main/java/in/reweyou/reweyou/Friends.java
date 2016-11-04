@@ -164,7 +164,8 @@ public class Friends extends AppCompatActivity {
                                 if (!PhoneNumberUtils.compare(contactNumber.get(j), session.getMobileNumber())) {
                                     matchedNumber.add(contactNumber.get(j));
                                     Log.d("namee", getContactName(Friends.this, contactNumber.get(j)));
-                                    matchedName.add(getContactName(Friends.this, contactNumber.get(j)));
+                                    if (!matchedName.contains(getContactName(Friends.this, contactNumber.get(j))))
+                                        matchedName.add(getContactName(Friends.this, contactNumber.get(j)));
                                 }
 
                             }
