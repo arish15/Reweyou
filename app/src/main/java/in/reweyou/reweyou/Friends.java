@@ -152,7 +152,7 @@ public class Friends extends AppCompatActivity {
                 JSONArray parentArray = new JSONArray(finalJson);
                 StringBuffer finalBufferedData = new StringBuffer();
 
-                for (int i = 0; i < parentArray.length(); i++) {
+               /* for (int i = 0; i < parentArray.length(); i++) {
                     JSONObject finalObject = parentArray.getJSONObject(i);
                     messagelist.add(finalObject.getString("number"));
 
@@ -172,7 +172,32 @@ public class Friends extends AppCompatActivity {
 
                         }
                     }
+                }*/
+
+                for (int i = 0; i < parentArray.length(); i++) {
+                    JSONObject finalObject = parentArray.getJSONObject(i);
+                    messagelist.add(finalObject.getString("number"));
                 }
+                for (int j = 0; j < contactNumber.size(); j++) {
+                    for (int k = 0; k < messagelist.size(); k++) {
+                        if (PhoneNumberUtils.compare(messagelist.get(k), contactNumber.get(j))) {
+                            Log.d("matchedNumber", contactNumber.get(j));
+
+                            if (!matchedNumber.contains(contactNumber.get(j))) {
+                                if (!PhoneNumberUtils.compare(contactNumber.get(j), session.getMobileNumber())) {
+                                    matchedNumber.add(contactNumber.get(j));
+                                    Log.d("namee", getContactName(Friends.this, contactNumber.get(j)));
+                                    if (!matchedName.contains(getContactName(Friends.this, contactNumber.get(j))))
+                                        matchedName.add(getContactName(Friends.this, contactNumber.get(j)));
+                                }
+
+                            }
+                            break;
+                        }
+                    }
+                }
+
+
                 return matchedName;
 
                 //return buffer.toString();
